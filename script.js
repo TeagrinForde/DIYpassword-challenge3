@@ -33,7 +33,9 @@ function writePassword() {
   if (aNumber >= 8 && aNumber <= 128) {  //password length 8-128
     var pswdLength = aNumber;
     console.log(pswdLength);
+
     finalArray.length = pswdLength; // set pswdLength to characters
+
   } else {
     alert("INCORRECT LENGTH - You must choose from 8 to 128 characters."); //length validation
     writePassword(); //reset prompt
@@ -58,6 +60,7 @@ function writePassword() {
   shuffleArray(finalArray); // shuffle the characters
   console.log(finalArray);
 
+  finalArray.length = pswdLength; // set pswdLength to characters
 
   var genPswd = finalArray;
 
@@ -66,13 +69,13 @@ function writePassword() {
 
 function generatePassword() {
   if (isNumeric===true) {
-    let finalArray = [].concat(numeric);
+    finalArray = finalArray.concat(numeric);
   } else if (isUpper===true) {
-    let finalArray = [].concat(upperCase);
+    finalArray = finalArray.concat(upperCase);
   } else if (isLower===true) {
-    let finalArray = [].concat(lowerCase);
+    finalArray = finalArray.concat(lowerCase);
   } else if (isSpecial===true) {
-    let finalArray = [].concat(special);
+    finalArray = finalArrayconcat(special);
   } else {
     window.alert('You must choose at least one type of character.');
     writePassword();
