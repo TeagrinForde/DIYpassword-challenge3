@@ -6,7 +6,6 @@ var lowerCase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm'
 var special = ['!', '@', '#', '$', '%', '^', '&', '*', '-', '_', '=', '+', '/', '?', '.', '>', ',', '<', '`', '~', '|']; //special characters array
 
 var finalArray = [];
-
 var isNumeric, isUpper, isLower, isSpecial
 
 // Add event listener to generate button
@@ -14,28 +13,19 @@ generateBtn.addEventListener("click", writePassword);
 
 // Write password to the #password input
 function writePassword() {
-
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
   passwordText.value = password;
-
 }
 
-
-
 //Generate password to match the given criteria
-function writePassword() {
+function generatePassword() {
   console.log("Hey! you clicked the button.");
 
   var aNumber = Number(window.prompt("How many characters would you like your password to contain?"), "");   //prompt user for password length
 
   if (aNumber >= 8 && aNumber <= 128) {  //password length 8-128
-    var pswdLength = aNumber;
-    console.log(pswdLength);
-
-    finalArray.length = pswdLength; // set pswdLength to characters
-
+    console.log(aNumber);
   } else {
     alert("INCORRECT LENGTH - You must choose from 8 to 128 characters."); //length validation
     writePassword(); //reset prompt
@@ -50,33 +40,33 @@ function writePassword() {
   isSpecial = window.confirm("Click OK to confirm including special characters.");
   console.log(isSpecial);
 
-  generatePassword ();
-  console.log(finalArray);
+  genPassword(); //join arrays based on user selection
 
-  //generated password genPswd should match the criteria 
   function shuffleArray(finalArray) {
-    finalArray.sort(() => Math.random() - 0.5);
+    for (let i = 0; i < aNumber; i++) { // why isn't this for loop working???
+      finalArray.sort(() => Math.random() - 0.5); //randomize array
+    };
   };
-  shuffleArray(finalArray); // shuffle the characters
+  shuffleArray(finalArray);
   console.log(finalArray);
 
-  finalArray.length = pswdLength; // set pswdLength to characters
-
-  var genPswd = finalArray;
-
-  return genPswd   // generated password written to the page
+  document.getElementById("password").innerHTML = finalArray; // generated password written to the page???
 }
 
-function generatePassword() {
-  if (isNumeric===true) {
+function genPassword() {
+  if (isNumeric === true) {
     finalArray = finalArray.concat(numeric);
-  } else if (isUpper===true) {
+  };
+  if (isUpper === true) {
     finalArray = finalArray.concat(upperCase);
-  } else if (isLower===true) {
+  };
+  if (isLower === true) {
     finalArray = finalArray.concat(lowerCase);
-  } else if (isSpecial===true) {
-    finalArray = finalArrayconcat(special);
-  } else {
+  };
+  if (isSpecial === true) {
+    finalArray = finalArray.concat(special);
+  };
+  if (isNumeric === false && isUpper === false && isLower === false && isSpecial === false) {
     window.alert('You must choose at least one type of character.');
     writePassword();
   }
