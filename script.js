@@ -1,12 +1,11 @@
-// generate button
-var generateBtn = document.querySelector("#generate");
+var generateBtn = document.querySelector("#generate"); // generate button
 var numeric = '0123456789'; //number string
 var upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'; //uppercase string
 var lowerCase = 'abcdefghijklmnopqrstuvwxyz'; //lowercase string
 var special = '!@#$%^&*()_+~`-=*/|'; //special characters string
-
-var passwordGen = '';
-var isNumeric, isUpper, isLower, isSpecial
+var passwordText = document.querySelector('#password');
+var passwordGen = ''; //empty string to drop collected characters into to generate and shuffle
+var isNumeric, isUpper, isLower, isSpecial;
 
 // Write password to the #password input
 function writePassword() {
@@ -19,7 +18,6 @@ function writePassword() {
 function generatePassword() {
   console.log("Hey! you clicked the button.");
   
-
   var aNumber = Number(window.prompt("How many characters would you like your password to contain?"), "");   //prompt user for password length
 
   if (aNumber >= 8 && aNumber <= 128) {  //password length 8-128
@@ -61,14 +59,14 @@ function generatePassword() {
 
   console.log(characters);
 
-  for (var i = 0; i < aNumber; i++) { //shuffle and define lenght
-    var randomize = characters.charAt(Math.floor(Math.random() * aNumber));
+  var totalCharacters = parseInt(aNumber); //convert to an integer value
+  for (var i = 0; i < totalCharacters; i++) { //shuffle and define length
+    var randomize = characters.charAt(Math.floor(Math.random() * characters.length));
     passwordGen += randomize;
   };
 
   return passwordGen; // return generated password to page
 }
-
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
