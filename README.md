@@ -1,4 +1,4 @@
-# pswGenerator-challenge3
+# DIYpassword-challenge3
 
 The site is a random password generator that follows criteria that creates a strong password that provides greater security. The criteria includes:
 - length of password is at least 8 characters and no more than 128 characters
